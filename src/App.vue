@@ -33,11 +33,11 @@
         <nav
           :class="{
             'hidden sm:flex': !menuOpen,
-            'flex flex-col sm:flex-row mt-4 sm:mt-0 sm:space-x-6': true,
+            'flex flex-col sm:flex-row sm:flex-wrap mt-4 sm:mt-0 sm:space-x-6': true,
           }"
         >
           <ul
-            class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto text-center"
+            class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto text-center"
           >
             <li
               v-for="section in sectionsList"
