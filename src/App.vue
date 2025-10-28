@@ -72,7 +72,6 @@ import Education from "./components/Education.vue";
 import Skills from "./components/Skills.vue";
 import Contact from "./components/Contact.vue";
 
-const currentSection = ref("hero");
 const menuOpen = ref(false);
 
 const sections = {
