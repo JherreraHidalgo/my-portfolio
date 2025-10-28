@@ -133,4 +133,29 @@ function showSection(section) {
     padding-right: 0.5rem;
   }
 }
+
+/* Header responsive */
+header nav ul {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones bajen a la siguiente línea */
+  justify-content: center; /* Centra los botones en la pantalla */
+  gap: 0.75rem; /* Espacio entre botones */
+}
+
+header nav ul li button {
+  white-space: nowrap; /* Evita que los textos se rompan */
+  flex: 1 1 auto; /* Permite que los botones se ajusten si hay espacio */
+  min-width: 100px; /* Ancho mínimo para que no se haga demasiado pequeño */
+}
+
+/* Ajuste extra para pantallas muy estrechas */
+@media (max-width: 700px) {
+  header nav ul {
+    flex-direction: column; /* Coloca los botones en vertical si es necesario */
+    gap: 0.5rem;
+  }
+  header nav ul li button {
+    width: 100%; /* Botones ocupan toda la línea */
+  }
+}
 </style>
