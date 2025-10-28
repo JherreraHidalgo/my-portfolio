@@ -8,51 +8,108 @@
       >
         <h1 class="text-2xl font-bold tracking-wide">Javier Herrera Hidalgo</h1>
         <nav>
-          <ul class="flex space-x-6 text-white">
+          <ul class="flex space-x-6">
             <li>
-              <a href="#about" class="hover:text-yellow-300 transition"
-                >Sobre mí</a
+              <button
+                @click="showSection('about')"
+                class="hover:text-yellow-300 transition"
               >
+                Sobre mí
+              </button>
             </li>
             <li>
-              <a href="#experience" class="hover:text-yellow-300 transition"
-                >Experiencia</a
+              <button
+                @click="showSection('experience')"
+                class="hover:text-yellow-300 transition"
               >
+                Experiencia
+              </button>
             </li>
             <li>
-              <a href="#education" class="hover:text-yellow-300 transition"
-                >Formación</a
+              <button
+                @click="showSection('education')"
+                class="hover:text-yellow-300 transition"
               >
+                Formación
+              </button>
             </li>
             <li>
-              <a href="#skills" class="hover:text-yellow-300 transition"
-                >Habilidades</a
+              <button
+                @click="showSection('skills')"
+                class="hover:text-yellow-300 transition"
               >
+                Habilidades
+              </button>
             </li>
             <li>
-              <a href="#contact" class="hover:text-yellow-300 transition"
-                >Contacto</a
+              <button
+                @click="showSection('contact')"
+                class="hover:text-yellow-300 transition"
               >
+                Contacto
+              </button>
             </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <Hero />
-    <About />
-    <Experience />
-    <Education />
-    <Skills />
-    <Contact />
+    <!-- Secciones con animación -->
+    <transition name="fade-slide" mode="out-in">
+      <component :is="currentSectionComponent" v-if="currentSectionComponent" />
+    </transition>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import Hero from "./components/Hero.vue";
 import About from "./components/About.vue";
 import Experience from "./components/Experience.vue";
 import Education from "./components/Education.vue";
 import Skills from "./components/Skills.vue";
 import Contact from "./components/Contact.vue";
+
+const currentSection = ref(null);
+
+const sections = {
+  hero: Hero,
+  about: About,
+  experience: Experience,
+  education: Education,
+  skills: Skills,
+  contact: Contact,
+};
+
+const currentSectionComponent = ref(Hero); // al cargar, se ve Hero
+
+function showSection(section) {
+  if (sections[section]) {
+    currentSectionComponent.value = sections[section];
+  }
+}
 </script>
+
+<style>
+/* Animación fade + slide */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+</style>
