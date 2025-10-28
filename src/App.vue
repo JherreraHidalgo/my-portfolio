@@ -37,7 +37,7 @@
           }"
         >
           <ul
-            class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto text-center"
+            class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-[350px] mx-auto text-center"
           >
             <li
               v-for="section in sectionsList"
@@ -49,7 +49,7 @@
                   showSection(section.id);
                   menuOpen = false;
                 "
-                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto"
+                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto px-4"
               >
                 {{ section.label }}
                 <span
@@ -78,8 +78,8 @@ import Education from "./components/Education.vue";
 import Skills from "./components/Skills.vue";
 import Contact from "./components/Contact.vue";
 
-const currentSection = ref("hero");
 const menuOpen = ref(false);
+const currentSectionComponent = ref(Hero);
 
 const sections = {
   hero: Hero,
@@ -89,7 +89,6 @@ const sections = {
   skills: Skills,
   contact: Contact,
 };
-const currentSectionComponent = ref(Hero);
 
 const sectionsList = [
   { id: "about", label: "Sobre mí" },
