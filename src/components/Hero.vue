@@ -13,12 +13,6 @@
       tecnologías web modernas. Apasionado por interfaces accesibles y
       experiencias digitales eficientes.
     </p>
-    <button
-      @click="$refs.contactSection.scrollIntoView({ behavior: 'smooth' })"
-      class="inline-block bg-yellow-400 text-purple-800 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-lg hover:bg-yellow-300 hover:scale-105 transition-transform duration-300"
-    >
-      Conecta conmigo
-    </button>
   </section>
 </template>
 
