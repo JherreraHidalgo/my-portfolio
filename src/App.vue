@@ -1,5 +1,6 @@
 <template>
   <div class="font-sans text-gray-800">
+    <!-- Header -->
     <header
       class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg sticky top-0 z-50"
     >
@@ -18,14 +19,13 @@
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+            />
           </svg>
         </button>
 
@@ -33,17 +33,23 @@
         <nav
           :class="{
             'hidden sm:flex': !menuOpen,
-            'flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 mt-4 sm:mt-0': true,
+            'flex flex-col sm:flex-row mt-4 sm:mt-0 sm:space-x-6': true,
           }"
         >
-          <ul class="flex flex-col sm:flex-row sm:space-x-6">
-            <li v-for="section in sectionsList" :key="section.id">
+          <ul
+            class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto text-center"
+          >
+            <li
+              v-for="section in sectionsList"
+              :key="section.id"
+              class="group w-full sm:w-auto"
+            >
               <button
                 @click="
                   showSection(section.id);
                   menuOpen = false;
                 "
-                class="hover:text-yellow-300 transition relative pb-1"
+                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto"
               >
                 {{ section.label }}
                 <span
@@ -72,6 +78,7 @@ import Education from "./components/Education.vue";
 import Skills from "./components/Skills.vue";
 import Contact from "./components/Contact.vue";
 
+const currentSection = ref("hero");
 const menuOpen = ref(false);
 
 const sections = {
@@ -82,7 +89,6 @@ const sections = {
   skills: Skills,
   contact: Contact,
 };
-
 const currentSectionComponent = ref(Hero);
 
 const sectionsList = [
