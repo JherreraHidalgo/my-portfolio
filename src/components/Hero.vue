@@ -8,10 +8,5 @@
       Especializado en Vue.js (2 y 3), TypeScript, jQuery y tecnologías web
       modernas.
     </p>
-    <a
-      href="#contact"
-      class="bg-yellow-400 text-purple-800 font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-300 transition"
-      >Contacta conmigo</a
-    >
   </section>
 </template>
