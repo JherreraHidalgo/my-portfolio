@@ -1,15 +1,15 @@
 <template>
-  <div class="font-sans text-gray-800">
+  <div class="font-sans text-gray-800 min-h-screen">
     <!-- Header -->
     <header
       class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg sticky top-0 z-50"
     >
       <div
-        class="container mx-auto flex justify-between items-center py-4 px-6"
+        class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8"
       >
         <h1 class="text-2xl font-bold tracking-wide">Javier Herrera Hidalgo</h1>
 
-        <!-- Botón hamburguesa para móviles -->
+        <!-- Botón hamburguesa -->
         <button
           class="sm:hidden focus:outline-none"
           @click="menuOpen = !menuOpen"
@@ -33,11 +33,11 @@
         <nav
           :class="{
             'hidden sm:flex': !menuOpen,
-            'flex flex-col sm:flex-row sm:flex-wrap mt-4 sm:mt-0 sm:space-x-6': true,
+            'flex flex-col sm:flex-row sm:flex-wrap mt-4 sm:mt-0 sm:items-center': true,
           }"
         >
           <ul
-            class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-[350px] mx-auto text-center"
+            class="flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto space-y-4 sm:space-y-0 sm:space-x-6 text-center max-w-full overflow-x-auto"
           >
             <li
               v-for="section in sectionsList"
@@ -49,7 +49,7 @@
                   showSection(section.id);
                   menuOpen = false;
                 "
-                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto px-4"
+                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto px-4 sm:px-6 truncate"
               >
                 {{ section.label }}
                 <span
@@ -89,7 +89,6 @@ const sections = {
   skills: Skills,
   contact: Contact,
 };
-
 const sectionsList = [
   { id: "about", label: "Sobre mí" },
   { id: "experience", label: "Experiencia" },
@@ -99,9 +98,7 @@ const sectionsList = [
 ];
 
 function showSection(section) {
-  if (sections[section]) {
-    currentSectionComponent.value = sections[section];
-  }
+  if (sections[section]) currentSectionComponent.value = sections[section];
 }
 </script>
 
@@ -120,5 +117,20 @@ function showSection(section) {
 .fade-slide-leave-from {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Navbar en móviles landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  nav ul {
+    justify-content: space-evenly;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  nav li button {
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 </style>
