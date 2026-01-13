@@ -1,3 +1,4 @@
+
 <script setup>
 import { BriefcaseIcon } from "lucide-vue-next";
 </script>
@@ -20,6 +21,37 @@ import { BriefcaseIcon } from "lucide-vue-next";
     </div>
 
     <div class="space-y-10 max-w-4xl mx-auto">
+      <!-- Krell / Indra / BBVA -->
+      <div
+        class="bg-white shadow-lg hover:shadow-2xl transition-all duration-500 rounded-2xl p-8 border-l-4 border-blue-600 hover:translate-x-1"
+      >
+        <h3 class="text-2xl font-semibold text-indigo-700">
+          Krell Consulting (para Indra) — Front-End Developer
+        </h3>
+        <p class="text-sm text-gray-500 mb-4">
+          Diciembre 2025 – Actualidad · Proyecto BBVA · 100% remoto
+        </p>
+        <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+          <li>
+            Desarrollo Front-End en el proyecto <strong>Cells</strong> para
+            <strong>BBVA</strong>, basado en arquitectura de
+            <strong>microfrontends</strong>.
+          </li>
+          <li>
+            Implementación de componentes desacoplados, reutilizables y alineados
+            con estándares corporativos.
+          </li>
+          <li>
+            Desarrollo y mantenimiento de <strong>tests unitarios</strong> con
+            <strong>Mocha</strong> y <strong>Chai</strong>.
+          </li>
+          <li>
+            Trabajo en equipos multidisciplinares bajo metodologías ágiles,
+            colaborando con perfiles de backend, QA y UX.
+          </li>
+        </ul>
+      </div>
+
       <!-- Nalanda Global -->
       <div
         class="bg-white shadow-lg hover:shadow-2xl transition-all duration-500 rounded-2xl p-8 border-l-4 border-indigo-500 hover:translate-x-1"
@@ -44,8 +76,7 @@ import { BriefcaseIcon } from "lucide-vue-next";
             CI/CD con Jenkins.
           </li>
           <li>
-            Trabajo coordinado con equipos de UX/UI y backend usando Figma y
-            Jira.
+            Trabajo coordinado con equipos de UX/UI y backend usando Figma y Jira.
           </li>
         </ul>
       </div>
