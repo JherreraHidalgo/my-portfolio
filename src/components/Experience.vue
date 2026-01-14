@@ -59,7 +59,7 @@ import { BriefcaseIcon } from "lucide-vue-next";
         <h3 class="text-2xl font-semibold text-indigo-700">
           Nalanda Global — Desarrollador Front-End
         </h3>
-        <p class="text-sm text-gray-500 mb-4">2021 – Actualidad</p>
+        <p class="text-sm text-gray-500 mb-4">2021 – 2025</p>
         <ul class="list-disc list-inside text-gray-700 leading-relaxed">
           <li>Desarrollo Front-End con Vue 2, Vue 3, jQuery y JSP.</li>
           <li>
