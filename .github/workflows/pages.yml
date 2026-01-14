@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Clean npm credentials
+        run: rm -f ~/.npmrc && npm config set registry https://registry.npmjs.org/
+
       - name: Clean npm cache
         run: npm cache clean --force
 
