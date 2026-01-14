@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Update Vite and Vue plugin
+        run: npm install --save-dev vite@^5.0.0 @vitejs/plugin-vue@^5.0.0
+
       - name: Build
         run: npm run build
 
