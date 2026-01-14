@@ -1,0 +1,161 @@
+<template>
+  <div class="font-sans text-gray-800 min-h-screen">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8"
+      >
+        <h1 class="text-2xl font-bold tracking-wide">Javier Herrera Hidalgo</h1>
+
+        <!-- Botón hamburguesa -->
+        <button
+          class="sm:hidden focus:outline-none"
+          @click="menuOpen = !menuOpen"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <!-- Navbar -->
+        <nav
+          :class="{
+            'hidden sm:flex': !menuOpen,
+            'flex flex-col sm:flex-row sm:flex-wrap mt-4 sm:mt-0 sm:items-center': true,
+          }"
+        >
+          <ul
+            class="flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto space-y-4 sm:space-y-0 sm:space-x-6 text-center max-w-full overflow-x-auto"
+          >
+            <li
+              v-for="section in sectionsList"
+              :key="section.id"
+              class="group w-full sm:w-auto"
+            >
+              <button
+                @click="
+                  showSection(section.id);
+                  menuOpen = false;
+                "
+                class="relative pb-1 hover:text-yellow-300 transition w-full sm:w-auto px-4 sm:px-6 truncate"
+              >
+                {{ section.label }}
+                <span
+                  class="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all duration-300 group-hover:w-full"
+                ></span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Secciones con animación -->
+    <transition name="fade-slide" mode="out-in">
+      <component :is="currentSectionComponent" v-if="currentSectionComponent" />
+    </transition>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import Hero from "./components/Hero.vue";
+import About from "./components/About.vue";
+import Experience from "./components/Experience.vue";
+import Education from "./components/Education.vue";
+import Skills from "./components/Skills.vue";
+import Contact from "./components/Contact.vue";
+
+const menuOpen = ref(false);
+const currentSectionComponent = ref(Hero);
+
+const sections = {
+  hero: Hero,
+  about: About,
+  experience: Experience,
+  education: Education,
+  skills: Skills,
+  contact: Contact,
+};
+const sectionsList = [
+  { id: "about", label: "Sobre mí" },
+  { id: "experience", label: "Experiencia" },
+  { id: "education", label: "Formación" },
+  { id: "skills", label: "Habilidades" },
+  { id: "contact", label: "Contacto" },
+];
+
+function showSection(section) {
+  if (sections[section]) currentSectionComponent.value = sections[section];
+}
+</script>
+
+<style>
+/* Animación fade + slide */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar en móviles landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  nav ul {
+    justify-content: space-evenly;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  nav li button {
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Header responsive */
+header nav ul {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones bajen a la siguiente línea */
+  justify-content: center; /* Centra los botones en la pantalla */
+  gap: 0.75rem; /* Espacio entre botones */
+}
+
+header nav ul li button {
+  white-space: nowrap; /* Evita que los textos se rompan */
+  flex: 1 1 auto; /* Permite que los botones se ajusten si hay espacio */
+  min-width: 100px; /* Ancho mínimo para que no se haga demasiado pequeño */
+}
+
+/* Ajuste extra para pantallas muy estrechas */
+@media (max-width: 700px) {
+  header nav ul {
+    flex-direction: column; /* Coloca los botones en vertical si es necesario */
+    gap: 0.5rem;
+  }
+  header nav ul li button {
+    width: 100%; /* Botones ocupan toda la línea */
+  }
+}
+</style>
